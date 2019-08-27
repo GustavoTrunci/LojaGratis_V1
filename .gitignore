@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/LojaGratis_V1/LojaGratis_V1/bin/Debug/netstandard2.0
+/LojaGratis_V1/LojaGratis_V1/obj
+/LojaGratis_V1/LojaGratis_V1.Android/bin/Debug
+/LojaGratis_V1/LojaGratis_V1.Android/obj
+/LojaGratis_V1/LojaGratis_V1.iOS/obj
