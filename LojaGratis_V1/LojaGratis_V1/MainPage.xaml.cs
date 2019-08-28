@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using LojaGratis_V1.Tables;
 
 namespace LojaGratis_V1
 {
@@ -18,8 +19,16 @@ namespace LojaGratis_V1
 
         private async void teste_bd()
         {
-            var client = new MobileServiceClient("https://idealapp.azurewebsites.net",);
-            
+            var client = new MobileServiceClient("https://idealapp.azurewebsites.net");
+
+
+
+            var lojasTable = client.GetTable<Lojas>();
+            List<Lojas> loja1 = await lojasTable
+                .Where(Lojas => Lojas.codigo== 2)
+                .ToListAsync();
+
+
 
             var testeTable = client.GetTable<Teste>();
 
