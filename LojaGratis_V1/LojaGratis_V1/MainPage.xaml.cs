@@ -24,9 +24,9 @@ namespace LojaGratis_V1
 
 
             var lojasTable = client.GetTable<Lojas>();
-            List<Lojas> loja1 = await lojasTable
-                .Where(Lojas => Lojas.codigo== 2)
-                .ToListAsync();
+            List<Lojas> loja1 = (await lojasTable
+                .Where(Lojas => Lojas.codigo == 2)
+                .ToListAsync());
 
 
 
