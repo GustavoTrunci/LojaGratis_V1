@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="LojaGratis_V1.Login">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Usuário: "
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Entry x:Name="Usuario"></Entry>
+            <Label Text="Senha:">
+                
+            </Label>
+            <Entry x:Name="Senha" IsPassword="True"></Entry>
+
+            <Button Clicked="B_Login_Clicked" x:Name="B_Login" Text="Login"></Button>
+            <Label x:Name="Mensagem">.</Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
