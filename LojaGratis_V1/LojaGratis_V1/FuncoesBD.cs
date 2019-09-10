@@ -24,5 +24,37 @@ namespace LojaGratis_V1
 
         }
 
+        public async Task<Usuarios> Le_Usuario(int codigo)
+        {
+            var client = new MobileServiceClient("https://idealapp.azurewebsites.net");
+
+            var usuariosTable = client.GetTable<Usuarios>();
+            List<Usuarios> usuarios1 = (await usuariosTable
+                .Where(Usuarios => Usuarios.codigo == codigo)
+                .ToListAsync());
+
+            if (usuarios1.Count == 0) return new Usuarios();
+
+            return usuarios1[0];
+
         }
+
+        public async Task<Usuarios> Le_Usuario(string nome)
+        {
+            var client = new MobileServiceClient("https://idealapp.azurewebsites.net");
+
+            var usuariosTable = client.GetTable<Usuarios>();
+            List<Usuarios> usuarios1 = (await usuariosTable
+                .Where(Usuarios => Usuarios.nome == nome)
+                .ToListAsync());
+
+            if (usuarios1.Count == 0) return new Usuarios();
+
+            return usuarios1[0];
+
+        }
+
+
+
+    }
     }

@@ -15,37 +15,12 @@ namespace LojaGratis_V1
         public  MainPage()
         {
             InitializeComponent();
-            Verifica_Conexao();
-            Chama_Tela_Login();
-           
-
 
         }
 
-        private async void Chama_Tela_Login()
-        {
-            Login tela_log = new Login();
-            await Navigation.PushAsync(tela_log);
-        }
+    
 
-        private async void Verifica_Conexao()
-        {
-
-            FuncoesBD funcs = new FuncoesBD();
-
-
-            bool retorno = await funcs.Testa_conexao();
-            if (retorno == false)
-            {
-                Toast.MakeText(Android.App.Application.Context , "Sem Conexão com a Internet", ToastLength.Short).Show();
-                
-               /*if (Device.RuntimePlatform== "Android")
-                {
-                    Android.OS.Process.KillProcess(Android.OS.Process.MyPid());
-                }*/
-                
-            }
-        }
+       
         private async void teste_bd()
         {
             var client = new MobileServiceClient("https://idealapp.azurewebsites.net");

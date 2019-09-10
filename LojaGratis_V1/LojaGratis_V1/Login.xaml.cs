@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LojaGratis_V1.Tables;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,28 @@ namespace LojaGratis_V1
 
         private async void B_Login_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopAsync();
+            FuncoesBD funcs = new FuncoesBD();
+
+            string nome_user = Usuario.Text;
+
+            Usuarios retorno = await funcs.Le_Usuario(nome_user);
+
+            if (retorno.nome is null) {
+                Mensagem.Text = "Usuário não encontrado.";
+                return;
+            }
+
+            if (retorno.senha != Senha.Text )
+            {
+                Mensagem.Text = "Senha inválida.";
+                return;
+            }
+
+            Application.Current.Properties["Usuario"] = retorno.nome;
+            FuncoesGerais.geral_Nome_User = retorno.nome;
+            FuncoesGerais.geral_Codigo_User = retorno.codigo;
+
+            await Navigation.PopModalAsync();
         }
     }
 }
