@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="LojaGratis_V1.Consumir">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Código"/>
+                <Entry x:Name="codigo" MaxLength="2" WidthRequest="100"></Entry>
+                <Button x:Name="b_buscar" Text="Buscar" Clicked="B_buscar_Clicked"></Button>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="nome_produto" MinimumWidthRequest="300"></Label>
+                <Label x:Name="preco_produto" MinimumWidthRequest="100"></Label>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="b_Consumir" Text="Consumir" Clicked="B_Consumir_Clicked"></Button>
+                <Button x:Name="b_voltar" Text="Voltar" Clicked="B_voltar_Clicked"></Button>
+            </StackLayout>
+
+            <Label x:Name="Mensagem" FontSize="Large" TextColor="Red"></Label>
+
+
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -47,6 +47,25 @@ namespace LojaGratis_V1
             await testeTable.UpdateAsync(linha);
         }
 
+        private async void B_Consumir_Clicked(object sender, System.EventArgs e)
+        {
+                var detailPage = new Consumir();
+                await Navigation.PushModalAsync(detailPage);
+           
+
+        }
+
+        private async void B_Relatorio_Clicked(object sender, System.EventArgs e)
+        {
+            var detailPage = new Relatorio1();
+            await Navigation.PushModalAsync(detailPage);
+        }
+
+        private async void B_Lista_Prod_Clicked(object sender, System.EventArgs e)
+        {
+            var detailPage = new Lista_Produtos();
+            await Navigation.PushModalAsync(detailPage);
+        }
     }
 
     internal class Teste

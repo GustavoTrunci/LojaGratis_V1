@@ -54,7 +54,83 @@ namespace LojaGratis_V1
 
         }
 
+        public async Task<Produtos> Le_Produto(int codigo)
+        {
+            var client = new MobileServiceClient("https://idealapp.azurewebsites.net");
 
+            var produtosTable = client.GetTable<Produtos>();
+            List<Produtos> produto1 = (await produtosTable
+                .Where(Produtos => Produtos.codigo == codigo)
+                .ToListAsync());
+
+            if (produto1.Count == 0) return new Produtos();
+
+            return produto1[0];
+
+        }
+
+
+        public async Task<string> Grava_Consumo (int aux_usuario, string aux_produto, double aux_preco)
+        {
+
+
+            if (aux_usuario == 0) return "Usuário inválido.";
+            if (aux_produto == "") return "Produto inválido.";
+            if (aux_preco == 0) return "Preço inválido.";
+
+            var client = new MobileServiceClient("https://idealapp.azurewebsites.net");
+            var consumoTable = client.GetTable<Consumo>();
+
+            Consumo linha = new Consumo() { usuario=aux_usuario, data=DateTime.Today, pago=false, preco=aux_preco, produto=aux_produto, hora= DateTime.Now.ToString("HH:mm:ss")};
+
+            try
+            {
+                await consumoTable.InsertAsync(linha);
+            }
+            catch (Exception e)
+            {
+                return e.ToString();
+            }
+            
+            return "";
+        }
+
+
+
+        public async Task<IList<Produtos>> Retorna_Lista_Produtos()
+        {
+            var client = new MobileServiceClient("https://idealapp.azurewebsites.net");
+
+            var produtosTable = client.GetTable<Produtos>();
+            List<Produtos> prods = (await produtosTable
+                .Where(Produtos => Produtos.inativo==false)
+                .ToListAsync());
+
+           
+
+            return prods;
+
+        }
+
+
+        public async Task<IList<Consumo>> Retorna_Relatorio(int aux_usuario)
+        {
+            var client = new MobileServiceClient("https://idealapp.azurewebsites.net");
+
+
+            var consumoTable = client.GetTable<Consumo>();
+            List<Consumo> consumos = (await consumoTable
+                .Where(Consumo => Consumo.usuario==aux_usuario && Consumo.pago == false)
+                .OrderBy(Consumo => Consumo.ordem)
+                .ToListAsync());
+
+            if (consumos.Count == 0) return new List<Consumo>();
+
+            return consumos;
+
+
+
+        }
 
     }
     }
