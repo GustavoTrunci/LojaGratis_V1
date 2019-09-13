@@ -11,5 +11,7 @@ namespace LojaGratis_V1.Tables
         public string nome { get; set; }
         public string senha { get; set; }
         public Boolean bloqueado { get; set; }
+        public Boolean admin { get; set; }
+
     }
 }

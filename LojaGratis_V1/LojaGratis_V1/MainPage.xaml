@@ -6,6 +6,8 @@
 
     <StackLayout>
         <!-- Place new controls here -->
+        <Label x:Name="l_usuario" WidthRequest="300"></Label>
+        
         <Button x:Name="b_Consumir" Text="Consumir" Clicked="B_Consumir_Clicked"
            HorizontalOptions="Center"
            VerticalOptions="Center" />
@@ -18,6 +20,17 @@
         <Button x:Name="b_Relatorio" Text="Relatório" Clicked="B_Relatorio_Clicked"
            HorizontalOptions="Center"
            VerticalOptions="Center" />
+
+        <Button x:Name="b_Admin" Text="Admin" Clicked="B_Admin_Clicked"
+           HorizontalOptions="Center"
+           VerticalOptions="Center" 
+                IsVisible="False"/>
+
+
+        <Button x:Name="b_Logout" Text="Logout" Clicked="B_Logout_Clicked"
+           HorizontalOptions="Center"
+           VerticalOptions="Center" 
+                />
 
 
     </StackLayout>

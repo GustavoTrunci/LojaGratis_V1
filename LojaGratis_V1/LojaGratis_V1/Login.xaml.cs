@@ -22,7 +22,7 @@ namespace LojaGratis_V1
         {
             FuncoesBD funcs = new FuncoesBD();
 
-            string nome_user = Usuario.Text;
+            string nome_user = Usuario.Text.Trim();
 
             Usuarios retorno = await funcs.Le_Usuario(nome_user);
 
@@ -38,8 +38,14 @@ namespace LojaGratis_V1
             }
 
             Application.Current.Properties["Usuario"] = retorno.nome;
+            Application.Current.Properties["Usuario_Codigo"] = retorno.codigo;
+            Application.Current.Properties["Usuario_Admin"] = retorno.admin;
+
+           await Application.Current.SavePropertiesAsync();
+
             FuncoesGerais.geral_Nome_User = retorno.nome;
             FuncoesGerais.geral_Codigo_User = retorno.codigo;
+            FuncoesGerais.geral_User_admin = retorno.admin;
 
             await Navigation.PopModalAsync();
         }

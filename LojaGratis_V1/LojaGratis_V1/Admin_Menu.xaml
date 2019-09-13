@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="LojaGratis_V1.Admin_Menu">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Funções Administrativas"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+            <Button HorizontalOptions="CenterAndExpand"
+                    x:Name="b_Cad_Prod"
+                    Text="Cadastrar Produto"
+                    Clicked="B_Cad_Prod_Clicked"></Button>
+
+            <Button HorizontalOptions="CenterAndExpand"
+                    x:Name="b_Alt_Prod"
+                    Text="Alterar Produto"
+                    Clicked="B_Alt_Prod_Clicked"></Button>
+            
+            <Button HorizontalOptions="CenterAndExpand"
+                    x:Name="b_Cad_Usu"
+                    Text="Cadastrar Usuário"
+                    Clicked="B_Cad_Usu_Clicked"></Button>
+
+            
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -15,6 +15,13 @@ namespace LojaGratis_V1
         public  MainPage()
         {
             InitializeComponent();
+            if (FuncoesGerais.geral_User_admin==true)
+            {
+                b_Admin.IsVisible  = true;
+                    }
+
+            l_usuario.Text = FuncoesGerais.geral_Codigo_User + "-" + FuncoesGerais.geral_Nome_User + "-" + FuncoesGerais.geral_User_admin.ToString();
+
 
         }
 
@@ -49,7 +56,12 @@ namespace LojaGratis_V1
 
         private async void B_Consumir_Clicked(object sender, System.EventArgs e)
         {
-                var detailPage = new Consumir();
+
+            if (FuncoesGerais.geral_Codigo_User == 0)
+            {
+                return;
+            }
+            var detailPage = new Consumir();
                 await Navigation.PushModalAsync(detailPage);
            
 
@@ -64,6 +76,23 @@ namespace LojaGratis_V1
         private async void B_Lista_Prod_Clicked(object sender, System.EventArgs e)
         {
             var detailPage = new Lista_Produtos();
+            await Navigation.PushModalAsync(detailPage);
+        }
+
+        private async void B_Admin_Clicked(object sender, System.EventArgs e)
+        {
+            var detailPage = new Admin_Menu();
+            await Navigation.PushModalAsync(detailPage);
+        }
+
+        private async void B_Logout_Clicked(object sender, System.EventArgs e)
+        {
+            FuncoesGerais.Apaga_Dados_Usuario(true);
+
+
+            //Android.OS.Process.KillProcess(Android.OS.Process.MyPid());
+
+            var detailPage = new Login();
             await Navigation.PushModalAsync(detailPage);
         }
     }

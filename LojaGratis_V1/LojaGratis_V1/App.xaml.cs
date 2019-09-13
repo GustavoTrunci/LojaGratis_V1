@@ -17,21 +17,27 @@ namespace LojaGratis_V1
             Verifica_Conexao();
             Le_Dados_Usuario();
 
-            MainPage = new NavigationPage(new MainPage());
-
 
 #if DEBUG
             FuncoesGerais.geral_Codigo_User = 1;
             FuncoesGerais.geral_Nome_User = "Gustavo";
+            FuncoesGerais.geral_User_admin = true;
 #endif
 
-            if (FuncoesGerais.geral_Nome_User == "") {
+            if (FuncoesGerais.geral_Nome_User == "")
+            {
                 Chama_Tela_Login();
             }
             else
             {
-                
+
             }
+
+
+
+            MainPage = new NavigationPage(new MainPage());
+
+
 
            
 
@@ -43,11 +49,14 @@ namespace LojaGratis_V1
         {
             if (Application.Current.Properties.ContainsKey("Usuario"))
             {
-                FuncoesGerais.geral_Nome_User = Application.Current.Properties.ContainsKey("Usuario").ToString();
+                FuncoesGerais.geral_Nome_User = Application.Current.Properties["Usuario"].ToString();
+                FuncoesGerais.geral_Codigo_User = (int)Application.Current.Properties["Usuario_Codigo"];
+                FuncoesGerais.geral_User_admin = (bool)Application.Current.Properties["Usuario_Admin"];
+
             }
             else
             {
-                FuncoesGerais.geral_Nome_User = "";
+                FuncoesGerais.Apaga_Dados_Usuario(false);
             }
             
                                        
@@ -56,6 +65,8 @@ namespace LojaGratis_V1
     private async void Chama_Tela_Login()
     {
             //MainPage = new NavigationPage(new Login());
+            MainPage = new NavigationPage();
+
             var detailPage = new Login();
             await MainPage.Navigation.PushModalAsync(detailPage);
             // Login = new NavigationPage(new Login());

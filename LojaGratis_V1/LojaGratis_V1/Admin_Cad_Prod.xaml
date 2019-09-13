@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="LojaGratis_V1.Admin_Cad_Prod">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Cadastro de Produtos"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="b_Novo" Text="Novo" Clicked="B_Novo_Clicked"></Button>
+                <Button x:Name="b_Alterar" Text="Alterar" Clicked="B_Alterar_Clicked"></Button>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Código:"></Label>
+                <Entry x:Name="Codigo"></Entry>
+                <Button x:Name="b_Buscar_Codigo" Text="Buscar"></Button>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Nome:"></Label>
+                    <Entry x:Name="Nome"></Entry>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Preço:"></Label>
+                    <Entry x:Name="Preco"></Entry>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Inativo"></Label>
+                    
+                </StackLayout>
+                
+            </StackLayout>
+            
+            
+        </StackLayout>
+        
+        
+        
+        
+    </ContentPage.Content>
+</ContentPage>
