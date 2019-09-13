@@ -33,6 +33,7 @@
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Inativo"></Label>
+                    <Switch x:Name="Inativo"></Switch>
                     
                 </StackLayout>
                 

@@ -17,9 +17,10 @@ namespace LojaGratis_V1
             InitializeComponent();
         }
 
-        private void B_Cad_Prod_Clicked(object sender, EventArgs e)
+        private async void B_Cad_Prod_Clicked(object sender, EventArgs e)
         {
-
+            var detailPage = new Admin_Cad_Prod();
+            await Navigation.PushModalAsync(detailPage);
         }
 
         private void B_Cad_Usu_Clicked(object sender, EventArgs e)
@@ -27,9 +28,5 @@ namespace LojaGratis_V1
 
         }
 
-        private void B_Alt_Prod_Clicked(object sender, EventArgs e)
-        {
-
-        }
     }
 }

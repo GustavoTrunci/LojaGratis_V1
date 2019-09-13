@@ -15,12 +15,7 @@
                     x:Name="b_Cad_Prod"
                     Text="Cadastrar Produto"
                     Clicked="B_Cad_Prod_Clicked"></Button>
-
-            <Button HorizontalOptions="CenterAndExpand"
-                    x:Name="b_Alt_Prod"
-                    Text="Alterar Produto"
-                    Clicked="B_Alt_Prod_Clicked"></Button>
-            
+                       
             <Button HorizontalOptions="CenterAndExpand"
                     x:Name="b_Cad_Usu"
                     Text="Cadastrar Usuário"
