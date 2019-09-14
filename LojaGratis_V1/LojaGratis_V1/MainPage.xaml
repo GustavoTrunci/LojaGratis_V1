@@ -32,6 +32,7 @@
            VerticalOptions="Center" 
                 />
 
+        <Label HorizontalOptions="End" Text="desgin by André Lingiardi"></Label>
 
     </StackLayout>
 

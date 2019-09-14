@@ -25,7 +25,7 @@ namespace LojaGratis_V1
             FuncoesBD funcs = new FuncoesBD();
 
             IList<Consumo> lista_consumo;
-            lista_consumo = await funcs.Retorna_Relatorio(FuncoesGerais.geral_Codigo_User);
+            lista_consumo = await funcs.Retorna_Relatorio_Consumo(FuncoesGerais.geral_Codigo_User);
 
             view_relatorio.ItemsSource = lista_consumo;
             BindingContext = this;

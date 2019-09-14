@@ -70,6 +70,158 @@ namespace LojaGratis_V1
         }
 
 
+        public async Task<string> Grava_Produto(int aux_codigo, string aux_nome, double aux_preco, bool aux_inativo, bool novo)
+        {
+            var client = new MobileServiceClient("https://idealapp.azurewebsites.net");
+
+            var produtosTable = client.GetTable<Produtos>();
+
+            Produtos linha;
+
+            // PRODUTO NOVO
+            if (novo == true)
+            {
+                linha = new Produtos()
+                {
+                    codigo = aux_codigo,
+                    nome = aux_nome,
+                    preco = aux_preco,
+                    inativo = aux_inativo
+                };
+
+                try
+                {
+            await produtosTable.InsertAsync(linha);
+                }
+                catch (Exception e)
+                {
+                    return e.ToString();
+                }
+                return "";
+        }
+
+
+            //ATUALIZANDO PRODUTO
+            linha = await Le_Produto(aux_codigo);
+            if (linha.nome == "") {
+                return ("Produto não encontrado para gravar.");
+            }
+
+            linha.codigo = aux_codigo;
+            linha.nome = aux_nome;
+            linha.preco = aux_preco;
+            linha.inativo = aux_inativo;
+
+            try
+            {
+                await produtosTable.UpdateAsync(linha);
+            }
+            catch (Exception e)
+            {
+                return e.ToString();
+            }
+            return "";
+        }
+
+
+
+
+        public async Task<string> Grava_Usuario(int aux_codigo, string aux_nome, string aux_senha, bool aux_bloqueado, bool aux_admin, bool novo)
+        {
+            var client = new MobileServiceClient("https://idealapp.azurewebsites.net");
+
+            var usuariosTable = client.GetTable<Usuarios>();
+
+            Usuarios linha;
+
+            // USUARIO NOVO
+            if (novo == true)
+            {
+                linha = new Usuarios()
+                {
+                    codigo = aux_codigo,
+                    nome = aux_nome,
+                    senha = aux_senha,
+                    bloqueado = aux_bloqueado,
+                    admin = aux_admin
+                };
+
+                try
+                {
+                    await usuariosTable.InsertAsync(linha);
+                }
+                catch (Exception e)
+                {
+                    return e.ToString();
+                }
+                return "";
+            }
+
+
+            //ATUALIZANDO USUARIO
+            linha = await Le_Usuario(aux_codigo);
+            if (linha.nome == "")
+            {
+                return ("Usuário não encontrado para gravar.");
+            }
+
+            linha.codigo = aux_codigo;
+            linha.nome = aux_nome;
+            linha.senha = aux_senha;
+            linha.bloqueado = aux_bloqueado;
+            linha.admin = aux_admin;
+
+            try
+            {
+                await usuariosTable.UpdateAsync(linha);
+            }
+            catch (Exception e)
+            {
+                return e.ToString();
+            }
+            return "";
+        }
+
+
+
+
+
+
+
+        public async Task<int> Retorna_prox_codigo_produto()
+        {
+            var client = new MobileServiceClient("https://idealapp.azurewebsites.net");
+
+            var produtosTable = client.GetTable<Produtos>();
+            List<Produtos> produto1 = (await produtosTable
+                .OrderByDescending(Produtos => Produtos.codigo)
+                .Take(1)
+                .ToListAsync());
+
+            if (produto1.Count == 0) return 1;
+
+            return produto1[0].codigo+1;
+        }
+
+        public async Task<int> Retorna_prox_codigo_usuario()
+        {
+            var client = new MobileServiceClient("https://idealapp.azurewebsites.net");
+
+            var usuariosTable = client.GetTable<Usuarios>();
+            List<Usuarios> usuario1 = (await usuariosTable
+                .OrderByDescending(Usuarios => Usuarios.codigo)
+                .Take(1)
+                .ToListAsync());
+
+            if (usuario1.Count == 0) return 1;
+
+            return usuario1[0].codigo + 1;
+
+
+        }
+
+
+
         public async Task<string> Grava_Consumo (int aux_usuario, string aux_produto, double aux_preco)
         {
 
@@ -113,7 +265,7 @@ namespace LojaGratis_V1
         }
 
 
-        public async Task<IList<Consumo>> Retorna_Relatorio(int aux_usuario)
+        public async Task<IList<Consumo>> Retorna_Relatorio_Consumo(int aux_usuario)
         {
             var client = new MobileServiceClient("https://idealapp.azurewebsites.net");
 
@@ -127,10 +279,70 @@ namespace LojaGratis_V1
             if (consumos.Count == 0) return new List<Consumo>();
 
             return consumos;
+        }
 
 
+        public async Task<string> Paga_Relatorio_Consumo(int aux_usuario)
+        {
+            var client = new MobileServiceClient("https://idealapp.azurewebsites.net");
+
+                        var consumoTable = client.GetTable<Consumo>();
+            List<Consumo> consumos = (await consumoTable
+                .Where(Consumo => Consumo.usuario == aux_usuario && Consumo.pago == false)
+                .OrderBy(Consumo => Consumo.ordem)
+                .ToListAsync());
+
+            if (consumos.Count == 0) return "Não existia consumo pendente.";
+
+            int total_linhas = consumos.Count;
+           
+            double total_pago = 0;
+
+            for (int i = 0; i < total_linhas; i++)
+            {
+                try
+                {
+
+
+                    Consumo linha_consumo = new Consumo();
+                    linha_consumo = await consumoTable.LookupAsync(consumos[i].Id);
+                    linha_consumo.pago = true;
+                    total_pago += linha_consumo.preco;
+
+
+                    await consumoTable.UpdateAsync(linha_consumo);
+                }
+                catch (Exception e)
+                {
+                    return "Erro ao receber, verifique relatório: " + e.ToString();
+                }
+            }
+
+
+            return "Total pago de R$ " + total_pago;
 
         }
 
+
+
+
+
+
+        public async Task<IList<Usuarios>> Retorna_Relatorio_Usuarios()
+        {
+            var client = new MobileServiceClient("https://idealapp.azurewebsites.net");
+
+            var usuariosTable = client.GetTable<Usuarios>();
+            List<Usuarios> usus = (await usuariosTable
+                .OrderBy(Usuarios => Usuarios.nome)
+                .ToListAsync());
+
+
+
+            return usus;
+
+        }
+
+
     }
-    }
+}
