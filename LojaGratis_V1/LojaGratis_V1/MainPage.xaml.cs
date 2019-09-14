@@ -20,14 +20,17 @@ namespace LojaGratis_V1
                 b_Admin.IsVisible  = true;
                     }
 
-            l_usuario.Text = FuncoesGerais.geral_Codigo_User + "-" + FuncoesGerais.geral_Nome_User + "-" + FuncoesGerais.geral_User_admin.ToString();
+         
 
 
         }
 
-    
+        protected override void OnAppearing()
+        {
+            l_usuario.Text = FuncoesGerais.geral_Codigo_User + "-" + FuncoesGerais.geral_Nome_User + "-" + FuncoesGerais.geral_User_admin.ToString();
+        }
 
-       
+
         private async void teste_bd()
         {
             var client = new MobileServiceClient("https://idealapp.azurewebsites.net");

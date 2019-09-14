@@ -271,11 +271,24 @@ namespace LojaGratis_V1
 
 
             var consumoTable = client.GetTable<Consumo>();
-            List<Consumo> consumos = (await consumoTable
-                .Where(Consumo => Consumo.usuario==aux_usuario && Consumo.pago == false)
-                .OrderBy(Consumo => Consumo.ordem)
-                .ToListAsync());
+            List<Consumo> consumos;
 
+            if (aux_usuario != 0)
+            {
+
+
+                consumos = (await consumoTable
+                    .Where(Consumo => Consumo.usuario == aux_usuario && Consumo.pago == false)
+                    .OrderBy(Consumo => Consumo.ordem)
+                    .ToListAsync());
+            } else
+            {
+                consumos = (await consumoTable
+                    .Where(Consumo => Consumo.pago == false)
+                    .OrderBy(Consumo => Consumo.produto)
+                    .ToListAsync());
+
+            }
             if (consumos.Count == 0) return new List<Consumo>();
 
             return consumos;
@@ -343,6 +356,7 @@ namespace LojaGratis_V1
 
         }
 
+        
 
     }
 }

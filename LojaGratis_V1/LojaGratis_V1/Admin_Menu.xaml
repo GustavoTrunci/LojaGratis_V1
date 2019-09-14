@@ -32,6 +32,10 @@
                     Text="Rel Usuários"
                     Clicked="B_Rel_Usuarios_Clicked"></Button>
 
+            <Button HorizontalOptions="CenterAndExpand"
+                    x:Name="b_Rel_Consumo_Geral"
+                    Text="Rel Consumo Geral"
+                    Clicked="B_Rel_Consumo_Geral_Clicked"></Button>
 
 
         </StackLayout>

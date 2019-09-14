@@ -40,5 +40,12 @@ namespace LojaGratis_V1
             var detailPage = new Admin_Pagar();
             await Navigation.PushModalAsync(detailPage);
         }
+
+        private async void B_Rel_Consumo_Geral_Clicked(object sender, EventArgs e)
+        {
+            var detailPage = new Admin_Rel_Consumo_Geral();
+            await Navigation.PushModalAsync(detailPage);
+
+        }
     }
 }
