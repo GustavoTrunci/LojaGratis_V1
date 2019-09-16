@@ -84,6 +84,13 @@ namespace LojaGratis_V1
 
         private async void B_Admin_Clicked(object sender, System.EventArgs e)
         {
+
+            if (FuncoesGerais.geral_User_admin==false)
+            {
+                Toast.MakeText(Android.App.Application.Context, "Não é um administrador.", ToastLength.Short).Show();
+                return;
+            }
+
             var detailPage = new Admin_Menu();
             await Navigation.PushModalAsync(detailPage);
         }
