@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="LojaGratis_V1.Admin_Cad_Usu">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Cadastro de Usuários"
+                VerticalOptions="Center" 
+                HorizontalOptions="CenterAndExpand" />
+
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="b_Novo" Text="Novo" Clicked="B_Novo_Clicked"></Button>
+                <Button x:Name="b_Alterar" Text="Alterar" Clicked="B_Alterar_Clicked"></Button>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Código:"></Label>
+                <Entry x:Name="Codigo" WidthRequest="100"></Entry>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Nome:"></Label>
+                    <Entry x:Name="Nome" WidthRequest="300"></Entry>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Senha:"></Label>
+                    <Entry x:Name="Senha"  WidthRequest="100">
+
+                    </Entry>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Bloqueado"></Label>
+                    <Switch x:Name="Bloqueado"></Switch>
+
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Administrador"></Label>
+                    <Switch x:Name="Admin"></Switch>
+
+                </StackLayout>
+
+                
+                <Button x:Name="b_Gravar" Text="Gravar" Clicked="B_Gravar_Clicked"></Button>
+                <Label x:Name="Mensagem"></Label>
+
+            </StackLayout>
+
+
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

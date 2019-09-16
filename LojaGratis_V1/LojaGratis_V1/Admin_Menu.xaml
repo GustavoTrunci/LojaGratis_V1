@@ -21,7 +21,21 @@
                     Text="Cadastrar Usuário"
                     Clicked="B_Cad_Usu_Clicked"></Button>
 
-            
+            <Button HorizontalOptions="CenterAndExpand"
+                    x:Name="b_Pagar"
+                    Text="Pagamento"
+                    Clicked="B_Pagar_Clicked"></Button>
+
+
+            <Button HorizontalOptions="CenterAndExpand"
+                    x:Name="b_Rel_Usuarios"
+                    Text="Rel Usuários"
+                    Clicked="B_Rel_Usuarios_Clicked"></Button>
+
+            <Button HorizontalOptions="CenterAndExpand"
+                    x:Name="b_Rel_Consumo_Geral"
+                    Text="Rel Consumo Geral"
+                    Clicked="B_Rel_Consumo_Geral_Clicked"></Button>
 
 
         </StackLayout>

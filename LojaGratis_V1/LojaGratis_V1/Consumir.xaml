@@ -9,7 +9,7 @@
         <StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Label Text="Código"/>
-                <Entry x:Name="codigo" MaxLength="2" WidthRequest="100"></Entry>
+                <Entry x:Name="codigo" MaxLength="2" WidthRequest="100" Keyboard="Numeric"></Entry>
                 <Button x:Name="b_buscar" Text="Buscar" Clicked="B_buscar_Clicked"></Button>
             </StackLayout>
 

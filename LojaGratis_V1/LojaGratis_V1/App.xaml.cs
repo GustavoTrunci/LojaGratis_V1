@@ -19,14 +19,14 @@ namespace LojaGratis_V1
 
 
 #if DEBUG
-            FuncoesGerais.geral_Codigo_User = 1;
-            FuncoesGerais.geral_Nome_User = "Gustavo";
-            FuncoesGerais.geral_User_admin = true;
+          //  FuncoesGerais.geral_Codigo_User = 1;
+          //  FuncoesGerais.geral_Nome_User = "Gustavo";
+          //  FuncoesGerais.geral_User_admin = true;
 #endif
 
             if (FuncoesGerais.geral_Nome_User == "")
             {
-                Chama_Tela_Login();
+              Chama_Tela_Login();
             }
             else
             {

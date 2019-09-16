@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="LojaGratis_V1.Admin_Rel_Usu">
+    <ContentPage.Content>
+
+        <StackLayout Orientation="Vertical">
+            <Label Text="Código-Nome-Bloqueado-Admin" />
+
+            <ListView x:Name="view_relatorio">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding codigo}">
+
+                                </Label>
+                                <Label Text="{Binding nome}">
+
+                                </Label>
+                                <Label Text="{Binding bloqueado}">
+
+                                </Label>
+                                <Label Text="{Binding admin}">
+
+                                </Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

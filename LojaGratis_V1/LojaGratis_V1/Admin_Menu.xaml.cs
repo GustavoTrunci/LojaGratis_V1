@@ -23,10 +23,29 @@ namespace LojaGratis_V1
             await Navigation.PushModalAsync(detailPage);
         }
 
-        private void B_Cad_Usu_Clicked(object sender, EventArgs e)
+        private async void B_Cad_Usu_Clicked(object sender, EventArgs e)
         {
-
+            var detailPage = new Admin_Cad_Usu();
+            await Navigation.PushModalAsync(detailPage);
         }
 
+        private async void B_Rel_Usuarios_Clicked(object sender, EventArgs e)
+        {
+            var detailPage = new Admin_Rel_Usu();
+            await Navigation.PushModalAsync(detailPage);
+        }
+
+        private async void B_Pagar_Clicked(object sender, EventArgs e)
+        {
+            var detailPage = new Admin_Pagar();
+            await Navigation.PushModalAsync(detailPage);
+        }
+
+        private async void B_Rel_Consumo_Geral_Clicked(object sender, EventArgs e)
+        {
+            var detailPage = new Admin_Rel_Consumo_Geral();
+            await Navigation.PushModalAsync(detailPage);
+
+        }
     }
 }

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="LojaGratis_V1.Admin_Rel_Consumo_Geral">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+
+         
+            <StackLayout Orientation="Vertical">
+                <Label x:Name="l_total" Text="" />
+
+                <ListView x:Name="view_relatorio">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding data}">
+
+                                    </Label>
+                                    <Label Text="{Binding hora}">
+
+                                    </Label>
+                                    <Label Text="{Binding produto}">
+
+                                    </Label>
+                                    <Label Text="{Binding preco}">
+
+                                    </Label>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+
+            </StackLayout>
+
+
+           
+            <Label Text="" x:Name="Mensagem"></Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
