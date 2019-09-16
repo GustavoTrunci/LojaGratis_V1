@@ -40,6 +40,16 @@ namespace LojaGratis_V1
                 return;
             }
 
+
+            bool usuario_ativo = await funcs.Verifica_Usuario_Ativo(FuncoesGerais.geral_Codigo_User);
+            if (usuario_ativo == false)
+            {
+                Mensagem.Text = "Usuário bloqueado.";
+                b_voltar.IsEnabled = true;
+                b_Consumir.IsEnabled = true;
+                return;
+            }
+
             string retorno = await funcs.Grava_Consumo (FuncoesGerais.geral_Codigo_User, aux_produto_atual, aux_preco_atual);
 
             if (retorno != "")

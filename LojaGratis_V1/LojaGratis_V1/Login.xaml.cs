@@ -37,6 +37,12 @@ namespace LojaGratis_V1
                 return;
             }
 
+            if (retorno.bloqueado== true)
+            {
+                Mensagem.Text = "Usuário bloqueado.";
+                return;
+            }
+
             Application.Current.Properties["Usuario"] = retorno.nome;
             Application.Current.Properties["Usuario_Codigo"] = retorno.codigo;
             Application.Current.Properties["Usuario_Admin"] = retorno.admin;
